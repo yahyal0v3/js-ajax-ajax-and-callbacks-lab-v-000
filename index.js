@@ -34,7 +34,7 @@ function searchRepositories() {
 
 function showCommits(el) {
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, function(response) {
-    const commitResults = `${response.map(r => displayCommits(r)).join('')}`
+    const commitResults = `${response.map(commit => displayCommits(commit)).join('')}`
     $("#details").html(commitResults)
   })
 
