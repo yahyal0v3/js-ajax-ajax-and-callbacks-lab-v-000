@@ -13,12 +13,12 @@ var displayError = () => {
   $("#errors").html("There has been an error")
 }
 
-var displayCommits = (r) => {
+function displayCommits(resp) {
   return `<div>
-            <p>SHA: ${r.sha}</p>
-            <p>Author: ${r.commit.author.name}</p>
-            <p>Author Login: ${r.author.login}</p>
-            <img src="${r.author.avatar_url}"
+            <p>SHA: ${resp.sha}</p>
+            <p>Author: ${resp.commit.author.name}</p>
+            <p>Author Login: ${resp.author.login}</p>
+            <img src="${resp.author.avatar_url}"
             `
 }
 
@@ -34,7 +34,7 @@ function searchRepositories() {
 
 function showCommits(el) {
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, function(response) {
-    const commitResults = `${response.map(r => displayCommits(r)).join('')}`
+    const commitResults = `${response.map(commit => displayCommits(commit)).join('')}`
     $("#details").html(commitResults)
   })
 
