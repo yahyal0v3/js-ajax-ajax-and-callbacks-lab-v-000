@@ -13,12 +13,12 @@ var displayError = () => {
   $("#errors").html("There has been an error")
 }
 
-var displayCommits = (r) => {
+function displayCommits(resp) {
   return `<div>
-            <p>SHA: ${r.sha}</p>
-            <p>Author: ${r.commit.author.name}</p>
-            <p>Author Login: ${r.author.login}</p>
-            <img src="${r.author.avatar_url}"
+            <p>SHA: ${resp.sha}</p>
+            <p>Author: ${resp.commit.author.name}</p>
+            <p>Author Login: ${resp.author.login}</p>
+            <img src="${resp.author.avatar_url}"
             `
 }
 
